@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders DigiAGIS hero text', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const heroElement = await screen.findByText(/DigiAGIS/i, {}, { timeout: 5000 });
+  expect(heroElement).toBeInTheDocument();
 });

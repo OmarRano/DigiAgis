@@ -22,12 +22,9 @@ import {
   LinearProgress,
 } from '@mui/material';
 import {
-  Upload,
   Assignment,
   VerifiedUser,
-  Schedule,
   Description,
-  LocationOn,
   Person,
   Star,
   Message,
@@ -42,7 +39,6 @@ const Verification = () => {
   const [verificationType, setVerificationType] = useState('');
   const [selectedAgent, setSelectedAgent] = useState(null);
   const [documents, setDocuments] = useState([]);
-  const [showAgentModal, setShowAgentModal] = useState(false);
 
   // Mock data
   const verificationTypes = [
@@ -165,7 +161,6 @@ const Verification = () => {
 
   const handleAgentSelect = (agent) => {
     setSelectedAgent(agent);
-    setShowAgentModal(false);
     handleNext();
   };
 

@@ -14,6 +14,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
   useEffect(() => {
     // Check if user is logged in on app start
     const storedUser = localStorage.getItem('digiagis_user');
@@ -26,6 +28,10 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     setLoading(true);
     try {
+      // Future API call would use API_URL
+      // const response = await axios.post(`${API_URL}/auth/login`, { email, password });
+      console.log(`Connecting to ${API_URL}...`);
+
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       
@@ -86,6 +92,9 @@ export const AuthProvider = ({ children }) => {
   const signup = async (userData) => {
     setLoading(true);
     try {
+      // Future API call would use API_URL
+      // const response = await axios.post(`${API_URL}/auth/signup`, userData);
+
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
