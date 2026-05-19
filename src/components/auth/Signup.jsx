@@ -51,6 +51,7 @@ const Signup = () => {
     yearsOfExperience: '',
     company: '',
     licenseNumber: '',
+    certificationFile: null,
     
     // Step 3: Terms
     agreeToTerms: false,
@@ -97,11 +98,18 @@ const Signup = () => {
   ];
 
   const handleChange = (e) => {
-    const { name, value, checked, type } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+    const { name, value, checked, type, files } = e.target;
+    if (type === 'file') {
+      setFormData(prev => ({
+        ...prev,
+        [name]: files[0]
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked : value
+      }));
+    }
   };
 
   const handleNext = () => {
@@ -350,6 +358,27 @@ const Signup = () => {
               value={formData.licenseNumber}
               onChange={handleChange}
             />
+
+            <Box sx={{ mt: 1 }}>
+              <Typography variant="body2" color="text.secondary" gutterBottom>
+                Upload AGIS Certification / ID Card (PDF or Image)
+              </Typography>
+              <Button
+                variant="outlined"
+                component="label"
+                fullWidth
+                startIcon={<BusinessCenter />}
+              >
+                {formData.certificationFile ? formData.certificationFile.name : 'Upload Document'}
+                <input
+                  type="file"
+                  hidden
+                  name="certificationFile"
+                  onChange={handleChange}
+                  accept=".pdf,.jpg,.jpeg,.png"
+                />
+              </Button>
+            </Box>
           </Box>
         );
 

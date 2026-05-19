@@ -28,3 +28,5 @@ export function sendSMS(to, message) {
   console.log(`sendSMS -> to=${to}`, message);
   return Promise.resolve({ success: true });
 }
+
+export default { enqueueNotification, sendEmail, sendSMS };
